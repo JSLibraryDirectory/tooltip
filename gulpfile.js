@@ -7,7 +7,6 @@ var gulp = require('gulp'),
       all: [
         'gulpfile.js',
         'src/*.js',
-        'demo/js/*.js',
         'docs/js/*.js'
       ],
       src: 'src/*.js',
@@ -17,7 +16,6 @@ var gulp = require('gulp'),
     styles = {
       all: [
         'src/*.css',
-        'demo/css/*.css',
         'docs/css/*.css'
       ],
       src: 'src/*.css',
