@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple jQuery tooltip plugin.">
+  <meta name="keywords" content="HTML, CSS, JS, JavaScript, jQuery plugin, tooltip, front-end, frontend, web development">
+  <meta name="author" content="Fengyuan Chen">
+  <title>Tooltip</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/tooltip.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <!-- header -->
+  <header class="navbar navbar-static-top docs-header" id="top">
+    <div class="container">
+      <div class="navbar-header">
+        <button class="navbar-toggle" data-target="#navbar-collapse-1" data-toggle="collapse" type="button">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="javascript:void(0);">Tooltip</a>
+      </div>
+      <nav class="collapse navbar-collapse" id="navbar-collapse-1" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="http://github.com/fengyuanchen/tooltip/blob/master/README.md">Docs</a></li>
+          <li><a href="http://github.com/fengyuanchen/tooltip">Github</a></li>
+          <li><a href="http://chenfengyuan.com">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Jumbotron -->
+  <div class="jumbotron docs-jumbotron">
+    <div class="container">
+      <h1>Tooltip <small class="version">v0.0.1</small></h1>
+      <p class="lead">A simple jQuery tooltip plugin.</p>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container">
+    <h2 class="page-header">Overview</h2>
+    <div class="row">
+      <div class="col-sm-6">
+        <h3 class="page-header">Options</h3>
+        <form class="form-horizontal docs-form">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputToggle">Toggles</label>
+            <div class="col-sm-10">
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inputToggle1" name="autohide" checked> autohide
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inputToggle2" name="autoshow" checked> autoshow
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inputToggle3" name="countdown"> countdown
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inputToggle4" name="dismissible"> dismissible
+              </label>
+              <label class="checkbox-inline">
+                <input type="checkbox" id="inputToggle4" name="fixed" checked> fixed
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputContent">content</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="inputContent" name="content" placeholder="content">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputDuration">duration</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputDuration" name="duration" value="3000" placeholder="duration">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputOffset">offset</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputOffset" name="offset" value="10" placeholder="offset">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputPosition">position</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="inputPosition" name="position">
+                <option value="left top">left top</option>
+                <option value="center top" selected>center top</option>
+                <option value="right top">right top</option>
+                <option value="left middle">left middle</option>
+                <option value="center middle">center middle</option>
+                <option value="right middle">right middle</option>
+                <option value="left bottom">left bottom</option>
+                <option value="center bottom">center bottom</option>
+                <option value="right bottom">right bottom</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputStyle">style</label>
+            <div class="col-sm-10">
+              <select class="form-control" id="inputStyle" name="style">
+                <option value="default" selected>default</option>
+                <option value="primary">primary</option>
+                <option value="success">success</option>
+                <option value="info">info</option>
+                <option value="warning">warning</option>
+                <option value="danger">danger</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputZindex">zIndex</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="inputZindex" name="zIndex" value="1024" placeholder="zIndex">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+              <button class="btn btn-primary" data-target="#preview" data-content="A simple tooltip in box" type="button">Show</button>
+              <button class="btn btn-primary" data-target="body" data-content="A simple tooltip in body" type="button">Show on body</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-sm-6">
+        <h3 class="page-header">Preview</h3>
+        <div class="docs-preview" id="preview">
+          <img src="img/picture.jpg" alt="Picture">
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <h3 class="page-header">JavaScript</h3>
+        <pre class="prettyprint">$(function () {
+  var options = {};
+
+  $('.docs-form').on('change', function (e) {
+    var $target = $(e.target);
+
+    options[$target.attr('name')] = $target.is(':checkbox') ? $target.prop('checked') : $target.val();
+  }).on('click', 'button', function () {
+    var data = $(this).data();
+
+    $(data.target).tooltip('show', (options.content || data.content), options);
+  });
+});</pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="docs-footer">
+    <div class="container">
+      <span class="hearts"></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+  <script src="js/tooltip.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
