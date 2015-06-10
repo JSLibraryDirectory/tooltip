@@ -60,7 +60,9 @@ gulp.task('js', ['jshint', 'jscs'], function () {
   .pipe(gulp.dest(scripts.docs))
   .pipe(gulp.dest(scripts.dest))
   .pipe(plugins.rename('tooltip.min.js'))
-  .pipe(plugins.uglify())
+  .pipe(plugins.uglify({
+    preserveComments: 'some'
+  }))
   .pipe(gulp.dest(scripts.dest));
 });
 
