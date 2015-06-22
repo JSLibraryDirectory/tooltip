@@ -1,6 +1,8 @@
 $(function () {
   var options = {};
 
+  $('body').tooltip('Welcome', 'primary');
+
   $('.docs-form').on('change', function (e) {
     var $target = $(e.target);
 
