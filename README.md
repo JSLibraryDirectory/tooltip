@@ -52,6 +52,9 @@ $('body').tooltip({
 
 // With method
 $('body').tooltip('show', 'Hello, world!');
+
+// Shortcut
+$('body').tooltip('Hello, world!');
 ```
 
 
@@ -172,19 +175,30 @@ $().tooltip('method', argument1, , argument2, ..., argumentN)
 
 - **content** (optional):
   - Type: `String`
-  - Tooltip [content](#content)
+  - Tooltip's [content](#content)
 - **options** (optional):
-  - Type: `Object`
-  - Tooltip [options](#options)
+  - Type: `String` or `Object`
+  - Tooltip's [style](#style) or tooltip's [options](#options)
 
 Show the tooltip with new content.
 
 ```js
 $().tooltip('show', 'Hello, world!');
+$().tooltip('show', 'Hello, world!', 'primary');
 $().tooltip('show', 'Hello, world!', {
   style: 'primary',
   zIndex: 2048
 });
+```
+
+
+**Shortcut:** `$().tooltip(content, options)`
+
+- Only for `show` method
+- The first argument must be a string (not one of the methods)
+
+```js
+$().tooltip('Hello, world!', 'primary');
 ```
 
 

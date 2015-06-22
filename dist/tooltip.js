@@ -1,11 +1,11 @@
 /*!
- * Tooltip v0.0.1
+ * Tooltip v0.0.2
  * https://github.com/fengyuanchen/tooltip
  *
  * Copyright (c) 2015 Fengyuan Chen
  * Released under the MIT license
  *
- * Date: 2015-06-10T10:06:26.765Z
+ * Date: 2015-06-22T03:35:32.356Z
  */
 
 (function (factory) {
@@ -81,6 +81,10 @@
       }
     },
 
+    // Example Usage:
+    //   - show(content, options)
+    //   - show(content, style)
+    //   - show(options)
     show: function (content, options) {
       var $tooltip = this.$tooltip,
           showEvent = $.Event(EVENT_SHOW),
@@ -93,9 +97,17 @@
         return;
       }
 
-      if (!options && $.isPlainObject(content)) {
-        options = content;
-        content = '';
+      if (options) {
+        if (isString(options) && $.inArray(options, Tooltip.STYLES) > -1) {
+          options = {
+            style: options
+          };
+        }
+      } else {
+        if ($.isPlainObject(content)) {
+          options = content;
+          content = '';
+        }
       }
 
       this.options = options = $.extend({}, this.initialOptions, $.isPlainObject(options) && options);
@@ -328,7 +340,14 @@
         $this.data(NAMESPACE, (data = new Tooltip(this, options)));
       }
 
-      if (isString(options) && $.isFunction((fn = data[options]))) {
+      if (isString(options)) {
+        fn = data[options];
+
+        if (!$.isFunction(fn)) {
+          fn = data.show; // Support the shortcut of "show" method
+          args.unshift(options);
+        }
+
         fn.apply(data, args);
       }
     });
